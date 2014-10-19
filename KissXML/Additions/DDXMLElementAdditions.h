@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "DDXML.h"
+#import <KissXML/DDXMLElement.h>
 
 // These methods are not part of the standard NSXML API.
 // But any developer working extensively with XML will likely appreciate them.
@@ -11,14 +11,11 @@
 - (DDXMLElement *)elementForName:(NSString *)name;
 - (DDXMLElement *)elementForName:(NSString *)name xmlns:(NSString *)xmlns;
 
-- (NSString *)xmlns;
-- (void)setXmlns:(NSString *)ns;
-
-- (NSString *)prettyXMLString;
-- (NSString *)compactXMLString;
+@property (nonatomic, strong) NSString *xmlns;
+@property (nonatomic, readonly) NSString *prettyXMLString;
+@property (nonatomic, readonly) NSString *compactXMLString;
 
 - (void)addAttributeWithName:(NSString *)name stringValue:(NSString *)string;
-
-- (NSDictionary *)attributesAsDictionary;
+@property (nonatomic, readonly) NSDictionary *attributesAsDictionary;
 
 @end

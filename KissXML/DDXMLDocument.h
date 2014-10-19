@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-#import "DDXMLElement.h"
-#import "DDXMLNode.h"
+#import <KissXML/DDXMLNode.h>
+#import <KissXML/DDXMLElement.h>
 
 /**
  * Welcome to KissXML.
@@ -29,13 +29,11 @@ enum {
 typedef NSUInteger DDXMLDocumentContentKind;
 
 @interface DDXMLDocument : DDXMLNode
-{
-}
 
-- (id)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error;
+- (instancetype)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error;
 //- (id)initWithContentsOfURL:(NSURL *)url options:(NSUInteger)mask error:(NSError **)error;
-- (id)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error;
-//- (id)initWithRootElement:(DDXMLElement *)element;
+- (instancetype)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error;
+//- (instancetype)initWithRootElement:(DDXMLElement *)element;
 
 //+ (Class)replacementClassForClass:(Class)cls;
 
@@ -58,7 +56,7 @@ typedef NSUInteger DDXMLDocumentContentKind;
 //- (DDXMLDTD *)DTD;
 
 //- (void)setRootElement:(DDXMLNode *)root;
-- (DDXMLElement *)rootElement;
+@property (nonatomic, readonly) DDXMLElement *rootElement;
 
 //- (void)insertChild:(DDXMLNode *)child atIndex:(NSUInteger)index;
 
@@ -72,7 +70,7 @@ typedef NSUInteger DDXMLDocumentContentKind;
 
 //- (void)replaceChildAtIndex:(NSUInteger)index withNode:(DDXMLNode *)node;
 
-- (NSData *)XMLData;
+@property (nonatomic, readonly) NSData *XMLData;
 - (NSData *)XMLDataWithOptions:(NSUInteger)options;
 
 //- (id)objectByApplyingXSLT:(NSData *)xslt arguments:(NSDictionary *)arguments error:(NSError **)error;
